@@ -1,5 +1,4 @@
  
-
 import java.util.ArrayList;
 import java.util.HashSet;
 
@@ -12,7 +11,7 @@ public class StringArrayUtils {
      * @return first element of specified array
      */ // TODO
     public static String getFirstElement(String[] array) {
-    	if (array.length > 1){
+    	if (array.length >= 1){
     		return array[0];
     	}
     	else return null;
@@ -23,7 +22,7 @@ public class StringArrayUtils {
      * @return second element in specified array
      */
     public static String getSecondElement(String[] array) {
-    	if(array.length > 2){
+    	if(array.length >= 2){
     		return array[1];
     	}
     	else return null;
@@ -34,7 +33,7 @@ public class StringArrayUtils {
      * @return last element in specified array
      */ // TODO
     public static String getLastElement(String[] array) {
-        if(array.length > 1){
+        if(array.length >= 1){
         	return array[array.length - 1];        }
         else return null;
     }
@@ -44,7 +43,7 @@ public class StringArrayUtils {
      * @return second to last element in specified array
      */ // TODO
     public static String getSecondToLastElement(String[] array) {
-    	if(array.length > 2){
+    	if(array.length >= 2){
     		return array[array.length - 2];
     	}
         return null;
@@ -72,13 +71,15 @@ public class StringArrayUtils {
     	
     	int len = array.length;
     	
-    	String [] reversedArray = new String[len];
-    	
-    	for (int i = 0; i < len; i++){
-    		reversedArray[len - 1 - i] = array[i];
+    	String temp;
+  
+    	for (int i = 0; i < len/2; i++){
+    		temp = array[i];
+    		array[i] = array[len - 1 - i];
+    		array[len - 1 - i] = temp;
     	}
     	
-        return reversedArray;
+        return array;
     }
 
     /**
@@ -88,7 +89,7 @@ public class StringArrayUtils {
     public static boolean isPalindromic(String[] array) {
     	
     	int len =  array.length;
-    	for (int i = 0; i < len; i++){
+    	for (int i = 0; i < len/2; i++){
     		if ( !(array[i].equals(array[len - 1 - i])) ){
     			return false;
     		}
@@ -240,5 +241,4 @@ public class StringArrayUtils {
 			}
     	}
     }
-
 }
